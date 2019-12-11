@@ -1,0 +1,45 @@
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center text-blue mb-4">KLM Login</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+
+                    <!-- form card login -->
+                    <div class="card rounded-2">
+                        <div class="card-header">
+                            <h4 class="mb-0 text-center ">Login</h4>
+                        </div>
+                        <div class="card-body">
+                            <form autocomplete="off" id="formLogin" [formGroup]="frmlogin" (ngSubmit)="onSubmit($event)">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" id="username" class="form-control form-control-md rounded-2" 
+                                    [(ngModel)]="loginDetail.UserId" formControlName="username" [ngClass]="{'form-submitted': formSubmitted}" required="" />
+                                        <div class="invalid-feedback">Oops, you missed this one.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control form-control-md rounded-2" id="password"
+                                    [(ngModel)]="loginDetail.Password" formControlName="password" [ngClass]="{'form-submitted': formSubmitted}" required="" />
+                                        <div class="invalid-feedback">Enter your password too!</div>
+                                </div>
+                                <button type="submit" id="btnLogin" class="btn btn-success btn-md float-right">Submit</button>
+                            </form>
+                        </div>
+                        <!--/card-block-->
+                    </div>
+                    <!-- /form card login -->
+
+                </div>
+
+
+            </div>
+            <!--/row-->
+
+        </div>
+        <!--/col-->
+    </div>
+    <!--/row-->
+</div>
+<!--/container-->

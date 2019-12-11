@@ -1,0 +1,379 @@
+
+<app-navigation></app-navigation>
+<div class="content">
+        <div class="panel panel-default">
+          <div class="panel-heading">Search</div>
+          <div class="panel-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <!--<div class="card-header card-header-primary">
+                      <h4 class="card-title">Search</h4>
+                    </div>-->
+                    <div class="card-body">
+                      <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Flight No</label>
+                              <input type="text" class="form-control" name="FlightNo" [(ngModel)]="createflightmodel.FlightNo" #refName="ngModel" id="FlightNo" required>
+                              <div *ngIf="!refName.valid  && (refName.dirty || refName.touched)"
+                                   class="alert alert-danger">
+                                <div [hidden]="!refName.errors.required">
+                                  FlightNo is required.
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Flight Date</label>
+                              <!--<input type="text" class="form-control">-->
+                              <input [(ngModel)]="createflightmodel.FlightDate" #refFlightDate="ngModel" ng2-datetime-picker class="form-control" name="FlightDate" required
+                                    
+                                      date-only="true"
+                                  
+                                     />
+      
+                              <div *ngIf="!refFlightDate.valid  && (refFlightDate.dirty || refFlightDate.touched)"
+                                   class="alert alert-danger">
+                                <div [hidden]="!refFlightDate.errors.required">
+                                  Flight Date is required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">PNR No</label>
+                              <input type="email" class="form-control" name="PnrNo" [(ngModel)]="createflightmodel.PnrNo" #refPnrNo="ngModel" id="PnrNo" required>
+                              <div *ngIf="!refPnrNo.valid  && (refPnrNo.dirty || refPnrNo.touched)"
+                                   class="alert alert-danger">
+                                <div [hidden]="!refPnrNo.errors.required">
+                                  PNR No is required.
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Rebooking Start Date</label>
+                              <input [(ngModel)]="createflightmodel.StartDate" #refStartdate="ngModel" ng2-datetime-picker class="form-control" name="RbkStartDate" required
+                                     date-format="YYYY-MM-DD HH:MM"
+                                     year="2014"
+                                     month="12"
+                                     day="31"
+                                     hour="23"
+                                     minute='59'
+                                     min-date="1"
+                                      date-only="true"
+                                  
+                                     />
+      
+                              <div *ngIf="!refStartdate.valid  && (refStartdate.dirty || refStartdate.touched)"
+                                   class="alert alert-danger">
+                                <div [hidden]="!refStartdate.errors.required">
+                                  Rebooking Start Date is required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Rebooking End Date</label>
+                              <input [(ngModel)]="createflightmodel.EndDate" #refEnddate="ngModel" ng2-datetime-picker class="form-control" name="RbkEndDate" required
+                                     date-format="YYYY-MM-DD HH:MM"
+                                     year="2014"
+                                     month="12"
+                                     day="31"
+                                     hour="23"
+                                     minute='59'
+                                     min-date="1"
+                                      date-only="true"
+                                    
+                                     />
+      
+                              <div *ngIf="!refEnddate.valid  && (refEnddate.dirty || refEnddate.touched)"
+                                   class="alert alert-danger">
+                                <div [hidden]="!refEnddate.errors.required">
+                                  Rebooking End Date is required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Reason Code</label>
+                              <select required name="ResonCodeid"
+                                      #refreasoncode="ngModel"
+                                      class="form-control" [(ngModel)]="createflightmodel.ReasonCode">
+                                <option value="undefined">Please select Value</option>
+                                <option *ngFor="let model of createflightmodel"
+                                        [ngValue]="model.ReasonCode">
+                                  {{model.ReasonCode}}
+                                </option>
+                              </select>
+                              <div *ngIf="!refreasoncode.valid  && (refreasoncode.dirty || refreasoncode.touched)"
+                                   class="alert alert-danger">
+                                <div [hidden]="!refreasoncode.errors.required">
+                                  Required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+      
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Origin</label>
+                              <select required name="Originid"
+                                      #reforiginid="ngModel"
+                                      class="form-control" [(ngModel)]="createflightmodel.Origin">
+                                <option value="undefined">Please select Value</option>
+                                <option *ngFor="let model of createflightmodel"
+                                        [ngValue]="model.Origin">
+                                  {{model.Origin}}
+                                </option>
+                              </select>
+                              <div *ngIf="!reforiginid.valid  && (reforiginid.dirty || reforiginid.touched)"
+                                   class="alert alert-danger">
+                                <div [hidden]="!reforiginid.errors.required">
+                                  Required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Destination</label>
+                              <select required name="Destinationid"
+                                      #refdestinationid="ngModel"
+                                      class="form-control" [(ngModel)]="createflightmodel.Destination">
+                                <option value="undefined">Please select Value</option>
+                                <option *ngFor="let model of createflightmodel"
+                                        [ngValue]="model.Destination">
+                                  {{model.Destination}}
+                                </option>
+                              </select>
+                              <div *ngIf="!refdestinationid.valid  && (refdestinationid.dirty || refdestinationid.touched)"
+                                   class="alert alert-danger">
+                                <div [hidden]="!refdestinationid.errors.required">
+                                  Required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Agent</label>
+                              <select required name="Originid"
+                                      #refagent="ngModel"
+                                      class="form-control" [(ngModel)]="createflightmodel.Agent">
+                                <option value="undefined">Please select Value</option>
+                                <option *ngFor="let model of createflightmodel"
+                                        [ngValue]="model.Agent">
+                                  {{model.Agent}}
+                                </option>
+                              </select>
+                              <div *ngIf="!refagent.valid  && (refagent.dirty || refagent.touched)"
+                                   class="alert alert-danger">
+                                <div [hidden]="!refagent.errors.required">
+                                  Required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+      
+                        </div>
+      
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">RebookingType</label>
+                              <select required name="RbkTypeid"
+                                      #refrbktype="ngModel"
+                                      class="form-control" [(ngModel)]="createflightmodel.RebookingType">
+                                <option value="undefined">Please select Value</option>
+                                <option *ngFor="let model of createflightmodel"
+                                        [ngValue]="model.RebookingType">
+                                  {{model.RebookingType}}
+                                </option>
+                              </select>
+                              <div *ngIf="!refrbktype.valid  && (refrbktype.dirty || refrbktype.touched)"
+                                   class="alert alert-danger">
+                                <div [hidden]="!refrbktype.errors.required">
+                                  Required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+      
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <button type="submit" class="btn btn-primary pull-right">Search</button>
+                            </div>
+                          </div>
+      
+                        </div>
+      
+                      </form>
+                    </div>
+                  </div>
+                </div>
+      
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      
+      
+        <div class="panel panel-default">
+          <div class="panel-heading">Search</div>
+          <div class="panel-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title ">Flight Search Result</h4>
+      
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead class=" text-primary">
+                          <th>
+                            ID
+                          </th>
+                          <th>
+                            Name
+                          </th>
+                          <th>
+                            Country
+                          </th>
+                          <th>
+                            City
+                          </th>
+                          <th>
+                            Salary
+                          </th>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                1
+                              </td>
+                              <td>
+                                Dakota Rice
+                              </td>
+                              <td>
+                                Niger
+                              </td>
+                              <td>
+                                Oud-Turnhout
+                              </td>
+                              <td class="text-primary">
+                                $36,738
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                2
+                              </td>
+                              <td>
+                                Minerva Hooper
+                              </td>
+                              <td>
+                                CuraÃ§ao
+                              </td>
+                              <td>
+                                Sinaai-Waas
+                              </td>
+                              <td class="text-primary">
+                                $23,789
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                3
+                              </td>
+                              <td>
+                                Sage Rodriguez
+                              </td>
+                              <td>
+                                Netherlands
+                              </td>
+                              <td>
+                                Baileux
+                              </td>
+                              <td class="text-primary">
+                                $56,142
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                4
+                              </td>
+                              <td>
+                                Philip Chaney
+                              </td>
+                              <td>
+                                Korea, South
+                              </td>
+                              <td>
+                                Overland Park
+                              </td>
+                              <td class="text-primary">
+                                $38,735
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                5
+                              </td>
+                              <td>
+                                Doris Greene
+                              </td>
+                              <td>
+                                Malawi
+                              </td>
+                              <td>
+                                Feldkirchen in KÃ¤rnten
+                              </td>
+                              <td class="text-primary">
+                                $63,542
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                6
+                              </td>
+                              <td>
+                                Mason Porter
+                              </td>
+                              <td>
+                                Chile
+                              </td>
+                              <td>
+                                Gloucester
+                              </td>
+                              <td class="text-primary">
+                                $78,615
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+      
+      </div>
+      

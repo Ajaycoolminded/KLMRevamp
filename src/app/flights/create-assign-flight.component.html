@@ -1,0 +1,419 @@
+<div class="content">
+      <div class="panel-heading text-white">Search</div>
+      <div class="panel-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <!--<div class="card-header card-header-primary">
+                  <h4 class="card-title">Search</h4>
+                </div>-->
+                <div class="card-body">
+                  <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-md-2">                 
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Flight No</label>
+                          <input type="text" class="form-control" name="FlightNo" [(ngModel)]="createflightmodel.FlightNo" #refName="ngModel" id="FlightNo" maxlength = "6" TabIndex="1" required>
+                          <div *ngIf="!refName.valid  && (refName.dirty || refName.touched)"
+                               class="alert alert-danger">
+                            <div [hidden]="!refName.errors.required">
+                              FlightNo is required.
+                            </div>
+                          </div>                     
+                        </div>
+                      </div>    
+                      <div class="col-md-2">                                 
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Flight Date</label>
+                          <!--<input type="text" class="form-control">-->
+                          <input [(ngModel)]="createflightmodel.FlightDate" #refFlightDate="ngModel" ng2-datetime-picker class="form-control" name="FlightDate" MaxLength="10"
+                          TabIndex="2" data-toggle="tooltip" title="Format(DD/MM/YYYY)" required
+                                
+                                  date-only="true"
+                              
+                                 /> 
+                          <div *ngIf="!refFlightDate.valid  && (refFlightDate.dirty || refFlightDate.touched)"
+                               class="alert alert-danger">
+                            <div [hidden]="!refFlightDate.errors.required">
+                              Flight Date is required
+                            </div>                         
+                        </div> 
+                        </div>
+                      </div>
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Origin</label>
+                            <input type="text" class="form-control" name="Origin" [(ngModel)]="createflightmodel.Origin" #refName="ngModel" id="Origin" MaxLength="3"
+                            TabIndex="3" required>
+                            <div *ngIf="!reforiginid.valid  && (reforiginid.dirty || reforiginid.touched)"
+                                 class="alert alert-danger">
+                              <div [hidden]="!reforiginid.errors.required">
+                                Required
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Destination</label>
+                            <input type="text" class="form-control" name="Destination" [(ngModel)]="createflightmodel.Destination" #refName="ngModel" id="Destination" MaxLength="3"
+                            TabIndex="4" required>
+                            <div *ngIf="!refdestinationid.valid  && (refdestinationid.dirty || refdestinationid.touched)"
+                                 class="alert alert-danger">
+                              <div [hidden]="!refdestinationid.errors.required">
+                                Destination is Required
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <button type="submit" class="btn btn-primary pull-right" TabIndex="5">Search</button>
+                            </div>
+                          </div>
+                    </div>     
+                </form>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+    <div class="panel-heading text-white">Create Flights</div>
+    <div class="panel-body">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <!--<div class="card-header card-header-primary">
+                <h4 class="card-title">Search</h4>
+              </div>-->
+              <div class="card-body">
+                <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Flight No</label>
+                        <input type="text" class="form-control" name="FlightNo" [(ngModel)]="createflightmodel.FlightNo" #refName="ngModel" id="FlightNo" maxlength = "6" TabIndex="6" required>
+                        <div *ngIf="!refName.valid  && (refName.dirty || refName.touched)"
+                             class="alert alert-danger">
+                          <div [hidden]="!refName.errors.required">
+                            FlightNo is required.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Total Pax</label>
+                          <input type="text" class="form-control" name="TotalPax" [(ngModel)]="createflightmodel.TotalPax" #refName="ngModel" id="TotalPax" MaxLength="3" TabIndex="7" required>
+                          <div *ngIf="!refName.valid  && (refName.dirty || refName.touched)"
+                               class="alert alert-danger">
+                            <div [hidden]="!refName.errors.required">
+                                Total Pax is required.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Reason code</label>
+                          <select required name="ReasonCode"
+                                      #refreasoncode="ngModel"
+                                      class="form-control" [(ngModel)]="createflightmodel.ReasonCode" TabIndex="8" >
+                                <option value="undefined">Please select Value</option>
+                                <option value="undefined">SAN</option>
+                                <option value="undefined">DBC</option>
+                                <option *ngFor="let model of createflightmodel"
+                                        [ngValue]="model.ReasonCode">
+                                  {{model.ReasonCode}}
+                                </option>
+                              </select>
+                              <div *ngIf="!refreasoncode.valid  && (refreasoncode.dirty || refreasoncode.touched)"
+                              class="alert alert-danger">
+                           <div [hidden]="!refreasoncode.errors.required">
+                              Reason code is Required
+                           </div>
+                         </div>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Departure Date</label>
+                              <!--<input type="text" class="form-control">-->
+                              <input [(ngModel)]="createflightmodel.FlightDate" #refFlightDate="ngModel" ng2-datetime-picker class="form-control" name="FlightDate" required
+                                    
+                                      date-only="true" TabIndex="9" data-toggle="tooltip" title="Format(DD/MM/YYYY)" MaxLength="10"
+                                  
+                                     />
+      
+                              <div *ngIf="!refFlightDate.valid  && (refFlightDate.dirty || refFlightDate.touched)"
+                                   class="alert alert-danger">
+                                <div [hidden]="!refFlightDate.errors.required">
+                                    Departure Date is required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Type</label>
+                              <select required name="Type"
+                                          #reftype="ngModel"
+                                          class="form-control" [(ngModel)]="createflightmodel.Type" TabIndex="10">
+                                    <option value="undefined">Please select Value</option>
+                                    <option value="undefined">E</option>
+                                    <option value="undefined">I</option>
+                                    <option *ngFor="let model of createflightmodel"
+                                            [ngValue]="model.type" >
+                                      {{model.type}}
+                                    </option>
+                                  </select>
+                                  <div *ngIf="!reftype.valid  && (reftype.dirty || reftype.touched)"
+                                  class="alert alert-danger">
+                               <div [hidden]="!reftype.errors.required">
+                                 Type is Required
+                               </div>
+                             </div>
+                              </div>
+                            </div>
+                          </div>
+                            <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Total Checkin Pax</label>
+                                  <input type="text" class="form-control" name="TotalCheckinPax" [(ngModel)]="createflightmodel.TotalCheckinPax" #refName="ngModel" id="TotalCheckinPax" MaxLength="3" TabIndex="11" required>
+                                  <div *ngIf="!refName.valid  && (refName.dirty || refName.touched)"
+                                       class="alert alert-danger">
+                                   
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-2">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Remaining Pax</label>
+                                  <input type="text" class="form-control" name="RemainingPax" [(ngModel)]="createflightmodel.RemainingPax" #refName="ngModel" id="RemainingPax" MaxLength="3" TabIndex="12" required>
+                                  <div *ngIf="!refName.valid  && (refName.dirty || refName.touched)"
+                                       class="alert alert-danger">
+                                   
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-md-2">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Departure Time</label>
+                                  <!--<input type="text" class="form-control">-->
+                                  <input [(ngModel)]="createflightmodel.DepartureTime" #refFlighttime="ngModel" ng2-datetime-picker class="form-control" name="DepartureTime" required
+                                        
+                                          time-only="true" MaxLength="5" TabIndex="13"
+                                      
+                                         />
+          
+                                  <div *ngIf="!refFlighttime.valid  && (refFlighttime.dirty || refFlighttime.touched)"
+                                       class="alert alert-danger">
+                                    <div [hidden]="!refFlighttime.errors.required">
+                                        Departure Time is required
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-md-2">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Origin</label>
+                                  <input type="text" class="form-control" name="Origin" [(ngModel)]="createflightmodel.Origin" #refName="ngModel" id="Origin" MaxLength="3" TabIndex="14" required>
+                                  <div *ngIf="!refName.valid  && (refName.dirty || refName.touched)"
+                                       class="alert alert-danger">
+                                    <div [hidden]="!refName.errors.required">
+                                      Origin is required.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-2">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Destination</label>
+                                  <input type="text" class="form-control" name="Destination" [(ngModel)]="createflightmodel.Destination" #refName="ngModel" id="Destination" MaxLength="3" TabIndex="15" required>
+                                  <div *ngIf="!refName.valid  && (refName.dirty || refName.touched)"
+                                       class="alert alert-danger">
+                                    <div [hidden]="!refName.errors.required">
+                                      Destination is required.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                              <div class="row">
+                              <div class="col-md-2">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Flight Received Date</label>
+                                  <!--<input type="text" class="form-control">-->
+                                  <input [(ngModel)]="createflightmodel.RecDt" #RecDt="ngModel" ng2-datetime-picker class="form-control" name="RecDt" MaxLength="10" TabIndex="16" required
+                                        
+                                          date-only="true"
+                                      
+                                         />
+          
+                                  <div *ngIf="!RecDt.valid  && (RecDt.dirty || RecDt.touched)"
+                                       class="alert alert-danger">
+                                    <div [hidden]="!RecDt.errors.required">
+                                      Flight Received Date is required
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-md-2">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Flight Received Time</label>
+                                  <!--<input type="text" class="form-control">-->
+                                  <input [(ngModel)]="createflightmodel.RecTime" #RecTime="ngModel" ng2-datetime-picker class="form-control" name="RecTime" MaxLength="5" TabIndex="17" required
+                                        
+                                          time-only="true"
+                                      
+                                         />
+          
+                                  <div *ngIf="!RecTime.valid  && (RecTime.dirty || RecTime.touched)"
+                                       class="alert alert-danger">
+                                    <div [hidden]="!RecTime.errors.required">
+                                      Flight Received Time is required
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-md-2">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Flight Closing Date</label>
+                                  <!--<input type="text" class="form-control">-->
+                                  <input [(ngModel)]="createflightmodel.closingDate" #closingDate="ngModel" ng2-datetime-picker class="form-control" name="closingDate" MaxLength="10" TabIndex="18" required
+                                        
+                                          date-only="true"
+                                      
+                                         />
+          
+                                  <div *ngIf="!closingDate.valid  && (closingDate.dirty || closingDate.touched)"
+                                       class="alert alert-danger">                    
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-2">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Flight Closing Time</label>
+                                  <!--<input type="text" class="form-control">-->
+                                  <input [(ngModel)]="createflightmodel.closingTime" #closingTime="ngModel" ng2-datetime-picker class="form-control" name="closingTime" MaxLength="5" TabIndex="19" required
+                                        
+                                          time-only="true"
+                                      
+                                         />
+          
+                                  <div *ngIf="!closingTime.valid  && (closingTime.dirty || closingTime.touched)"
+                                       class="alert alert-danger">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-2">
+                                <div class="form-group">
+                                  <label class="bmd-label-floating">Status</label>
+                                  <select required name="Status"
+                                              #refStatus="ngModel"
+                                              class="form-control" [(ngModel)]="createflightmodel.Status" TabIndex="20">
+                                        <option value="undefined">Please select Value</option>
+                                        <option value="undefined">OPEN</option>
+                                        <option value="undefined">CLOSED</option>
+                                        <option value="undefined">DEACTIVATE</option>
+                                        <option *ngFor="let model of createflightmodel"
+                                                [ngValue]="model.Status" >
+                                          {{model.Status}}
+                                        </option>
+                                      </select>
+                                      <div *ngIf="!refStatus.valid  && (refStatus.dirty || refStatus.touched)"
+                                      class="alert alert-danger">
+                                   <div [hidden]="!refStatus.errors.required">
+                                      Status is Required
+                                   </div>
+                                 </div>
+                                  </div>
+                                </div>                         
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="bmd-label-floating">Remarks</label>
+                                    <textarea class="form-control" name="Remarks" [(ngModel)]="createflightmodel.Remarks" #refRemarks="ngModel" id="Remarks" MaxLength="250"
+                                    TabIndex="21" rows="3" required> </textarea>
+                                    <div *ngIf="!refRemarks.valid  && (refRemarks.dirty || refRemarks.touched)"
+                                         class="alert alert-danger">
+                                      <div [hidden]="!refRemarks.errors.required">
+                                        Remarks is required.
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                               <div class="col-md-2">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="ExceptionalSituation" id="ExceptionalSituation" TabIndex="22" >
+                                    <label class="custom-control-label" for="ExceptionalSituation">Exceptional Situation</label>
+                                     </div>
+                                </div>
+                           </div>                   
+                    </form>
+                </div>
+              </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+      <div class="panel-heading text-white">Assign Flights</div>
+      <div class="panel-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <!--<div class="card-header card-header-primary">
+                  <h4 class="card-title">Search</h4>
+                </div>-->
+                <div class="card-body">
+                  <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating"></label>
+                              <select required name="agents"
+                                          #refagents="ngModel"
+                                          class="form-control" [(ngModel)]="createflightmodel.agents">
+                                    <option value="undefined">Please select Value</option>
+                                    <option *ngFor="let model of createflightmodel"
+                                            [ngValue]="model.agents">
+                                      {{model.agents}}
+                                    </option>
+                                  </select>
+                                  <div *ngIf="!refagents.valid  && (refagents.dirty || refagents.touched)"
+                                  class="alert alert-danger">
+                               <div [hidden]="!refagents.errors.required">
+                                 Required
+                               </div>
+                             </div>
+                              </div>
+                            </div>
+
+
+                      </div>                   
+                    </form>
+                </div>
+              </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
